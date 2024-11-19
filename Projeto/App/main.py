@@ -5,6 +5,7 @@ import hashlib
 import jwt
 import requests
 import json
+import random
 from datetime import datetime, timedelta
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import os
@@ -101,12 +102,19 @@ def login(email: str, password: str, db: Session = Depends(get_db)):
 
 
 # Country information endpoint
+DEFAULT_COUNTRIES = [
+    "Brazil", "France", "Germany", "Italy", "Japan",
+    "Canada", "Australia", "India", "South Korea", "United States"
+]
 @app.get("/consultar", tags=['Consult'])
-def consultar_country(name: str = Query(..., description="Digite o nome do país que deseja pesquisar"), credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme)):
+def consultar_country(name: str = Query(None, description="Digite o nome do país que deseja pesquisar"), credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme)):
     # Extract the token from the Authorization header
     token = credentials.credentials
     
     verify_jwt_token(token)
+
+    if not name:
+        name = random.choice(DEFAULT_COUNTRIES)
 
     # Get country information
     url = f"https://restcountries.com/v3.1/name/{name}"

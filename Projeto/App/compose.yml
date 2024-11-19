@@ -1,0 +1,22 @@
+name: projeto_cloud
+
+services:
+  app:
+    image: ribs2004/projeto_cloud:latest
+    container_name: fast_api_container
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/cloud_database
+    depends_on:
+      - db
+  
+  db:
+    image: postgres
+    container_name: db_container
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-cloud_database}
+    ports:
+      - "5430:5432"

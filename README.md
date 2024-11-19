@@ -18,7 +18,7 @@ Este repositório contém o projeto Cloud, que utiliza **Docker** para gerenciar
 ## Como Rodar o Projeto Localmente:
 Baixe o arquivo `compose.yml` clique [aqui](https://github.com/Ribs2004/Projeto-Cloud/blob/main/Projeto/App/compose.yml) e baixe o arquivo.
 
-Após isso, rode o seguinte comando, dentro do diretório onde o `compose.yml`está localizado:
+Após isso, rode o seguinte comando, dentro do diretório onde o `compose.yml` está localizado:
 
 ```bash
 docker compose up

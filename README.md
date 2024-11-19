@@ -1,5 +1,5 @@
 # Projeto Cloud
-## Parte 1
+## Parte 1:
 Este repositório contém o projeto Cloud, que utiliza **Docker** para gerenciar a aplicação baseada em **FastAPI**. A aplicação permite que os usuários pesquisem informações sobre países ao fornecerem o nome.
 
 ---
@@ -23,4 +23,19 @@ Após isso, rode o seguinte comando, dentro do diretório onde o `compose.yml` e
 ```bash
 docker compose up
 ```
-## AWS
+## Parte 2 (AWS):
+A aplicação da **AWS** segue o mesmo princípio da anteriormente citada no docker local e está disponível [aqui](http://a9811dd361b364f429965d9c58146773-214551977.us-east-2.elb.amazonaws.com/docs).
+
+Todos os comandos foram feitos pelo `CloudShell` da AWS
+### Comandos Utilizados:
+```bash
+eksctl create cluster --name projeto_cloud_cluster --region us-east-2 --nodes 2
+```
+```bash
+aws eks --region us-east-2 update-kubeconfig --name projeto_cloud_cluster
+```
+```bash
+kubectl apply -f app-deployment.yml
+kubectl apply -f db-deployment.yml
+```
+Após isso, verifique na aba **EKS** dentro do console da AWS se seu cluster está rodando corretamente

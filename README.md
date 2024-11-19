@@ -12,7 +12,7 @@ Este repositório contém o projeto Cloud, que utiliza **Docker** para gerenciar
    - O token obtido no login é utilizado para autenticar uma requisição `GET`.
    - O usuário pode digitar o nome de um país para obter informações detalhadas sobre ele (caso não digite, será devolvido informações sobre um país aleatório)
 
-### Exemplo da resposta da API:
+### Exemplo de resposta da API:
 ```bash
 {
   "country_data": [
